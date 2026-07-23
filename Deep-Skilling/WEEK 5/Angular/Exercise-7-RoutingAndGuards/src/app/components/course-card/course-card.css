@@ -1,0 +1,91 @@
+.course-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+.course-card.card--enrolled {
+  background-color: #eafaf1;
+  border-color: #2ecc71;
+}
+.course-card.card--full {
+  border-right: 4px solid #e74c3c;
+}
+.course-card.expanded {
+  padding-bottom: 1.5rem;
+}
+.course-card h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+.course-card p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+.badge-container {
+  margin: 0.5rem 0;
+}
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+}
+.badge-passed {
+  background-color: #2ecc71;
+}
+.badge-failed {
+  background-color: #e74c3c;
+}
+.badge-pending {
+  background-color: #95a5a6;
+}
+.details-panel {
+  margin: 0.75rem 0;
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.details-btn {
+  background-color: #7f8c8d;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  flex: 1;
+  font-weight: bold;
+}
+.details-btn:hover {
+  background-color: #707b7c;
+}
+.enroll-card-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  flex: 1;
+  font-weight: bold;
+}
+.enroll-card-btn:hover {
+  background-color: #2980b9;
+}
+.enroll-card-btn.btn-unenroll {
+  background-color: #e74c3c;
+}
+.enroll-card-btn.btn-unenroll:hover {
+  background-color: #c0392b;
+}

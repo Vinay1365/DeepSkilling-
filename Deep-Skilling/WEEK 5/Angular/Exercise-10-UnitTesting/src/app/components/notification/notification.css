@@ -1,0 +1,17 @@
+.notification-widget {
+  background-color: #eef7fc;
+  border: 1px solid #bee5eb;
+  padding: 1rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-family: sans-serif;
+}
+.notification-widget h4 {
+  margin-top: 0;
+  color: #0c5460;
+}
+.notification-widget ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #0c5460;
+}

@@ -1,0 +1,21 @@
+.course-list-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.selection-message {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #e8f8f5;
+  border: 1px solid #a3e4d7;
+  border-radius: 4px;
+  color: #16a085;
+  font-size: 1.1rem;
+}

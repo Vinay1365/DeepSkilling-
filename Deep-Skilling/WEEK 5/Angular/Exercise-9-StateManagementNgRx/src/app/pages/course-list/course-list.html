@@ -1,0 +1,30 @@
+<div class="course-list-container">
+  <h2>Available Courses (NgRx Store Driven)</h2>
+
+  <div *ngIf="isLoading$ | async" class="loading-spinner">
+    <p>Loading courses from NgRx Store...</p>
+  </div>
+
+  <div *ngIf="error$ | async as error" class="error-box">
+    <p>Error: {{ error }}</p>
+  </div>
+
+  <div class="courses-grid-wrapper" *ngIf="courses$ | async as courses">
+    <div class="courses-grid" *ngIf="courses.length > 0; else noCourses">
+      <app-course-card 
+        *ngFor="let course of courses; let i = index; trackBy: trackByCourseId" 
+        [course]="course" 
+        (click)="onCardClick(course.id)"
+        (enrollRequested)="onEnroll($event)">
+      </app-course-card>
+    </div>
+  </div>
+
+  <ng-template #noCourses>
+    <p class="no-courses-msg">No courses available in NgRx Store.</p>
+  </ng-template>
+
+  <p class="selection-message" *ngIf="selectedCourseId">
+    Selected course ID: <strong>{{ selectedCourseId }}</strong>
+  </p>
+</div>

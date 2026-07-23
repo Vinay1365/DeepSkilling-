@@ -1,0 +1,46 @@
+.home-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+h1 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+.description {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+.stats-row {
+  display: flex;
+  gap: 1.5rem;
+}
+.stat-card {
+  flex: 1;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+.stat-value {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #3498db;
+  margin-bottom: 0.5rem;
+}
+.stat-label {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

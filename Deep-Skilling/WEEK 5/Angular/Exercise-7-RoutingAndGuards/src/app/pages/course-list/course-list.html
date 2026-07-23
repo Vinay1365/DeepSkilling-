@@ -1,0 +1,29 @@
+<div class="course-list-container">
+  <h2>Available Courses</h2>
+  <p *ngIf="searchParam" class="search-filter-msg">Showing results for search: "<strong>{{ searchParam }}</strong>"</p>
+
+  <div *ngIf="isLoading; else contentBlock" class="loading-spinner">
+    <p>Loading courses...</p>
+  </div>
+
+  <ng-template #contentBlock>
+    <div class="courses-grid-wrapper" *ngIf="courses.length > 0; else noCourses">
+      <div class="courses-grid">
+        <app-course-card 
+          *ngFor="let course of courses; let i = index; trackBy: trackByCourseId" 
+          [course]="course" 
+          (click)="onCardClick(course.id)"
+          (enrollRequested)="onEnroll($event)">
+        </app-course-card>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #noCourses>
+    <p class="no-courses-msg">No courses available matching criteria.</p>
+  </ng-template>
+
+  <p class="selection-message" *ngIf="selectedCourseId && !isLoading">
+    Selected course ID: <strong>{{ selectedCourseId }}</strong>
+  </p>
+</div>

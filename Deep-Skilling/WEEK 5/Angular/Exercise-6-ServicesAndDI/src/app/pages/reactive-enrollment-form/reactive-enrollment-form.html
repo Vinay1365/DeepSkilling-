@@ -1,0 +1,95 @@
+<div class="form-container">
+  <h2>Reactive Student Course Enrollment</h2>
+
+  <div *ngIf="submitted" class="success-message">
+    Reactive Enrollment Submitted Successfully!
+  </div>
+
+  <form [formGroup]="enrollForm" (ngSubmit)="onSubmit()" novalidate>
+    <!-- Student Name -->
+    <div class="form-group">
+      <label for="studentName">Student Name *</label>
+      <input 
+        type="text" 
+        id="studentName" 
+        formControlName="studentName" 
+        class="form-control"
+        placeholder="Enter your full name">
+      <div *ngIf="enrollForm.get('studentName')?.touched && enrollForm.get('studentName')?.errors" class="error-text">
+        <span *ngIf="enrollForm.get('studentName')?.errors?.['required']">Name is required.</span>
+        <span *ngIf="enrollForm.get('studentName')?.errors?.['minlength']">Name must be at least 3 characters.</span>
+      </div>
+    </div>
+
+    <!-- Student Email -->
+    <div class="form-group">
+      <label for="studentEmail">Email Address *</label>
+      <input 
+        type="email" 
+        id="studentEmail" 
+        formControlName="studentEmail" 
+        class="form-control"
+        placeholder="student@example.com">
+      <div *ngIf="enrollForm.get('studentEmail')?.pending" class="info-text">
+        Checking email availability...
+      </div>
+      <div *ngIf="enrollForm.get('studentEmail')?.touched && enrollForm.get('studentEmail')?.errors" class="error-text">
+        <span *ngIf="enrollForm.get('studentEmail')?.errors?.['required']">Email is required.</span>
+        <span *ngIf="enrollForm.get('studentEmail')?.errors?.['email']">Please enter a valid email address.</span>
+        <span *ngIf="enrollForm.get('studentEmail')?.errors?.['emailTaken']">Email address is already taken (test@).</span>
+      </div>
+    </div>
+
+    <!-- Course ID -->
+    <div class="form-group">
+      <label for="courseId">Course Code / ID *</label>
+      <input 
+        type="text" 
+        id="courseId" 
+        formControlName="courseId" 
+        class="form-control"
+        placeholder="e.g. 101 or CS101">
+      <div *ngIf="enrollForm.get('courseId')?.touched && enrollForm.get('courseId')?.errors" class="error-text">
+        <span *ngIf="enrollForm.get('courseId')?.errors?.['required']">Course code is required.</span>
+        <span *ngIf="enrollForm.get('courseId')?.errors?.['noCourseCode']">Course code starting with XX is not allowed.</span>
+      </div>
+    </div>
+
+    <!-- Preferred Semester -->
+    <div class="form-group">
+      <label for="preferredSemester">Preferred Semester</label>
+      <select id="preferredSemester" formControlName="preferredSemester" class="form-control">
+        <option value="Odd">Odd Semester</option>
+        <option value="Even">Even Semester</option>
+      </select>
+    </div>
+
+    <!-- FormArray: Dynamic Additional Courses -->
+    <div class="form-group">
+      <label>Additional Courses to Enroll</label>
+      <div 
+        *ngFor="let ctrl of additionalCourses.controls; let i = index" 
+        class="dynamic-control-row">
+        <input [formControl]="$any(ctrl)" class="form-control" placeholder="Course code">
+        <button type="button" class="btn btn-danger" (click)="removeCourse(i)">Remove</button>
+      </div>
+      <button type="button" class="btn btn-secondary mt-2" (click)="addCourse()">+ Add Another Course</button>
+    </div>
+
+    <!-- Terms & Conditions -->
+    <div class="form-group checkbox-group">
+      <label>
+        <input type="checkbox" formControlName="agreeToTerms">
+        I agree to the terms and enrollment policies *
+      </label>
+      <div *ngIf="enrollForm.get('agreeToTerms')?.touched && enrollForm.get('agreeToTerms')?.errors" class="error-text">
+        <span *ngIf="enrollForm.get('agreeToTerms')?.errors?.['required']">You must agree to the terms before submitting.</span>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <button type="submit" class="btn btn-primary" [disabled]="enrollForm.invalid">Submit</button>
+    </div>
+  </form>
+</div>

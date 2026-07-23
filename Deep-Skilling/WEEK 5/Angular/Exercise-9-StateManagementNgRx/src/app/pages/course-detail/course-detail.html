@@ -1,0 +1,29 @@
+<div class="course-detail-container">
+  <a routerLink="/courses" class="back-link">&larr; Back to Courses List</a>
+
+  <div *ngIf="course; else notFound" class="course-detail-card">
+    <h2>{{ course.name }} ({{ course.code }})</h2>
+    <p><strong>Course ID:</strong> {{ course.id }}</p>
+    <p><strong>Credits:</strong> {{ course.credits | creditLabel }}</p>
+    <p><strong>Grade Status:</strong> {{ course.gradeStatus }}</p>
+    
+    <div class="description-box">
+      <h3>Course Overview</h3>
+      <p>This comprehensive module provides deep hands-on learning for {{ course.name }}. Designed for the Digital Nurture 5.0 track.</p>
+    </div>
+
+    <button 
+      class="btn-enroll" 
+      [ngClass]="{'btn-unenroll': enrollmentService.isEnrolled(course.id)}"
+      (click)="toggleEnroll()">
+      {{ enrollmentService.isEnrolled(course.id) ? 'Unenroll from Course' : 'Enroll in Course' }}
+    </button>
+  </div>
+
+  <ng-template #notFound>
+    <div class="error-box">
+      <h3>Course Not Found</h3>
+      <p>No course exists with ID: {{ courseId }}</p>
+    </div>
+  </ng-template>
+</div>
